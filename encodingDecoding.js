@@ -6,25 +6,25 @@ dotenv.config()
 
 
 async function encryptMessage({ message, publicKey }) {
-    const encrypted = await EthCrypto.encryptWithPublicKey(
-      Buffer.from(publicKey.slice(2), "hex"),
-      message
-    );
-    return EthCrypto.cipher.stringify(encrypted);
-  }
+  const encrypted = await EthCrypto.encryptWithPublicKey(
+    Buffer.from(publicKey.slice(2), "hex"),
+    message
+  );
+  return EthCrypto.cipher.stringify(encrypted);
+}
   
-  async function decryptMessage({ message, privateKey }) {
-    const decrypted = await EthCrypto.decryptWithPrivateKey(
-      privateKey,
-      message
-    );
-    return decrypted;
-  }
+async function decryptMessage({ message, privateKey }) {
+  const decrypted = await EthCrypto.decryptWithPrivateKey(
+    privateKey,
+    message
+  );
+  return decrypted;
+}
 
 function toHex(buffer) {
-    return Array.from(buffer)
-        .map(byte => byte.toString(16).padStart(2, '0'))
-        .join('');
+  return Array.from(buffer)
+      .map(byte => byte.toString(16).padStart(2, '0'))
+      .join('');
 }
 
 
